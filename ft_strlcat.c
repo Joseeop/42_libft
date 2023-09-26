@@ -6,23 +6,10 @@
 /*   By: jona-pin <jona-pin@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:26:18 by jona-pin          #+#    #+#             */
-/*   Updated: 2023/09/19 12:00:20 by jona-pin         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:12:44 by jona-pin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	cont;
-
-	cont = 0;
-	while (*s++)
-	{
-		cont++;
-	}
-	return (cont);
-}
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -66,4 +53,17 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
           );
 	
     return 0;
+
+	size_t	ft_strlen(const char *s)
+{
+	size_t	cont;
+
+	cont = 0;
+	while (*s++)
+	{
+		cont++;
+	}
+	return (cont);
+}
+
 }*/

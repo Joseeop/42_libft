@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jona-pin <jona-pin@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 14:35:22 by jona-pin          #+#    #+#             */
-/*   Updated: 2023/09/13 15:02:56 by jona-pin         ###   ########.fr       */
+/*   Created: 2023/09/22 12:20:52 by jona-pin          #+#    #+#             */
+/*   Updated: 2023/09/22 12:26:38 by jona-pin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strdup(const char *s1)
 {
-	int	i;
+	char	*c;
+	size_t	len;
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
-		i++;
-	}
-	if ((char)c == '\0')
-		return ((char *)&s[i]);
-	return (NULL);
+	len = ft_strlen(s1) + 1;
+	c = (char *)malloc(sizeof(*c) * len);
+	if (!c)
+		return (NULL);
+	return ((char *)ft_memcpy(c, s1, len));
 }

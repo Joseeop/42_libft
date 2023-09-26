@@ -9,9 +9,7 @@
 /*   Updated: 2023/09/19 11:22:56 by jona-pin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <string.h>
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -19,8 +17,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char	*destmove;
 	char	*srcmove;
 
-	if (!dst || !src)
-		return (NULL);
 	destmove = (char *)dst;
 	srcmove = (char *)src;
 	i = 0;
@@ -31,11 +27,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	else
 	{
-		while (len--)
-		{
-			destmove[i] = srcmove[i];
-			i++;
-		}
+		ft_memcpy(destmove, srcmove, len);
 	}
 	return (destmove);
 }
