@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jona-pin <jona-pin@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 11:58:52 by jona-pin          #+#    #+#             */
-/*   Updated: 2023/09/11 12:01:04 by jona-pin         ###   ########.fr       */
+/*   Created: 2023/10/11 15:56:46 by jona-pin          #+#    #+#             */
+/*   Updated: 2023/10/11 16:03:24 by jona-pin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	cont;
+	size_t	i;
 
-	cont = 0;
-	while (*s++)
+	i = 0;
+	while (lst)
 	{
-		cont++;
+		lst = lst->next;
+		i++;
 	}
-	return (cont);
+	return (i);
 }
-
-/* int	main(void)
-{
-	char str[] = "Hello World";
-	ft_strlen(str);
-	return (0);
-}*/

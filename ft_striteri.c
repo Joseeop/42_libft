@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jona-pin <jona-pin@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 11:58:52 by jona-pin          #+#    #+#             */
-/*   Updated: 2023/09/11 12:01:04 by jona-pin         ###   ########.fr       */
+/*   Created: 2023/10/05 11:28:01 by jona-pin          #+#    #+#             */
+/*   Updated: 2023/10/05 11:34:16 by jona-pin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	cont;
+	int	i;
 
-	cont = 0;
-	while (*s++)
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		cont++;
+		(*f)(i, (s + i));
+		i++;
 	}
-	return (cont);
 }
-
-/* int	main(void)
-{
-	char str[] = "Hello World";
-	ft_strlen(str);
-	return (0);
-}*/

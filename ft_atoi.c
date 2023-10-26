@@ -6,7 +6,7 @@
 /*   By: jona-pin <jona-pin@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 17:30:19 by jona-pin          #+#    #+#             */
-/*   Updated: 2023/09/14 13:57:06 by jona-pin         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:51:59 by jona-pin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -20,7 +20,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	res = 0;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
-			str++;
+		str++;
 	if (*str == '-')
 		sign = -1;
 	if (*str == '-' || *str == '+')
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 /*
 int main()
 {
-    char orig [] = "+1";
+    char orig [] = "   -134";
     printf("%i\n", atoi(orig));
     printf("%i", ft_atoi(orig));
 

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jona-pin <jona-pin@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 11:58:52 by jona-pin          #+#    #+#             */
-/*   Updated: 2023/09/11 12:01:04 by jona-pin         ###   ########.fr       */
+/*   Created: 2023/10/10 16:47:42 by jona-pin          #+#    #+#             */
+/*   Updated: 2023/10/10 17:56:50 by jona-pin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	cont;
+	t_list	*new_node;
 
-	cont = 0;
-	while (*s++)
-	{
-		cont++;
-	}
-	return (cont);
+	new_node = (t_list *)malloc(sizeof (t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
 }
-
-/* int	main(void)
-{
-	char str[] = "Hello World";
-	ft_strlen(str);
-	return (0);
-}*/
