@@ -6,7 +6,7 @@
 /*   By: jona-pin <jona-pin@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:59:04 by jona-pin          #+#    #+#             */
-/*   Updated: 2023/10/05 17:47:38 by jona-pin         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:18:43 by jona-pin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -32,52 +32,59 @@ static size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-static char	*string_memory(const char *s, char c)
+static void	free_tab(char **tab, int index)
 {
-	char	*str;
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	str = (char *)malloc(sizeof(char) *(i + 1));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != c)
+	while (i < index)
 	{
-		str[i] = s[i];
+		free(tab[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	free(tab);
+}
+
+static char	*ft_substring_fill(char *str, int start, int finish)
+{
+	char	*sub;
+	int		i;
+
+	i = 0;
+	sub = (char *)malloc(sizeof(char) * (finish - start + 1));
+	if (!sub)
+		return (NULL);
+	while (start < finish)
+		sub[i++] = str[start++];
+	sub[i] = '\0';
+	return (sub);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	words;
-	char	**tab;
+	char	**sub;
+	size_t	j;
 	size_t	i;
+	int		start;
 
-	if (!s)
+	sub = malloc (sizeof (char *) * (count_words((char *)s, c) + 1));
+	if (!sub || !s)
 		return (NULL);
-	words = count_words(s, c);
-	tab = (char **)malloc(sizeof(char *) * (words +1));
-	if (!tab)
-		return (NULL);
-	i = 0;
-	while (*s)
+	i = -1;
+	j = 0;
+	start = -1;
+	while (++i <= ft_strlen(s))
 	{
-		while (*s && *s == c)
-			s++;
-		if (*s && *s != c)
+		if (s[i] != c && start < 0)
+			start = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
 		{
-			tab[i] = string_memory(s, c);
-			i++;
-			while (*s && *s != c)
-				s++;
+			sub[j++] = ft_substring_fill(s, start, i);
+			if (!sub[j -1])
+				return (free_tab(sub, j), NULL);
+			start = -1;
 		}
 	}
-	tab[i] = NULL;
-	return (tab);
+	sub[j] = NULL;
+	return (sub);
 }
