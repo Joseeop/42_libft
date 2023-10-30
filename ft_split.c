@@ -45,7 +45,7 @@ static void	free_tab(char **tab, int index)
 	free(tab);
 }
 
-static char	*ft_substring_fill(char *str, int start, int finish)
+static char	*ft_substring_fill(const char *str, int start, int finish)
 {
 	char	*sub;
 	int		i;
